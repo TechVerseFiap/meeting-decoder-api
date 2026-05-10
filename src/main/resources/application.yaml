@@ -1,3 +1,34 @@
 spring:
   application:
     name: meeting-decoder
+
+  datasource:
+    url: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+    username: ${APP_USER}
+    password: ${ORACLE_PASSWORD}
+    driver-class-name: oracle.jdbc.OracleDriver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.OracleDialect
+
+    open-in-view: false
+    show-sql: true
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      hibernate:
+        SQL: DEBUG
+
+        type:
+          descriptor:
+            sql:
+              BasicBinder: TRACE
