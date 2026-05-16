@@ -1,8 +1,8 @@
 package br.com.meetingdecoder.domain.shared.error;
 
 public class DomainError {
-    private String code;
-    private String message;
+    private final String code;
+    private final String message;
 
     private DomainError(String code, String message) {
         this.code = code;
