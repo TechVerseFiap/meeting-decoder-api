@@ -1,4 +1,4 @@
-package br.com.meetingdecoder.domain.shared.error;
+package br.com.meetingdecoder.application.shared.error;
 
 public class DomainError {
     private String code;
