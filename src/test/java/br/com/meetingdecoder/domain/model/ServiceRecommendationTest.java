@@ -34,8 +34,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should create a ServiceRecommendation")
-    void shouldCreateServiceRecommendation() {
+    void create_ValidParameters_ShouldCreateServiceRecommendation() {
         ServiceRecommendation service =
                 ServiceRecommendation.create(
                         DEFAULT_NAME,
@@ -53,8 +52,7 @@ class ServiceRecommendationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("Should throw an exception when name is invalid")
-    void shouldThrowExceptionWhenNameIsInvalid(String name) {
+    void create_InvalidName_ShouldThrowException(String name) {
         assertThrows(
                 EmptyFieldException.class,
                 () -> ServiceRecommendation.create(
@@ -67,8 +65,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should throw an exception when category is null")
-    void shouldThrowExceptionWhenCategoryIsNull() {
+    void create_NullCategory_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
                 () -> ServiceRecommendation.create(
@@ -82,8 +79,7 @@ class ServiceRecommendationTest {
 
     @ParameterizedTest
     @NullAndEmptySource
-    @DisplayName("Should throw an exception when description is invalid")
-    void shouldThrowExceptionWhenDescriptionIsInvalid(String description) {
+    void create_InvalidDescription_ShouldThrowException(String description) {
         assertThrows(
                 EmptyFieldException.class,
                 () -> ServiceRecommendation.create(
@@ -97,8 +93,7 @@ class ServiceRecommendationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1"})
-    @DisplayName("Should throw an exception when price is invalid")
-    void shouldThrowExceptionWhenPriceIsInvalid(String price) {
+    void create_InvalidPrice_ShouldThrowException(String price) {
         assertThrows(
                 InvalidPriceException.class,
                 () -> ServiceRecommendation.create(
@@ -111,8 +106,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should update all fields")
-    void shouldUpdateAllFields() {
+    void update_ValidParameters_ShouldUpdateAllFields() {
         serviceRecommendation.update(
                 "Datasul",
                 ServiceCategory.FINANCE,
@@ -127,8 +121,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should update only description and price")
-    void shouldUpdateOnlyDescriptionAndPrice() {
+    void update_OnlyDescriptionAndPrice_ShouldUpdateSpecifiedFields() {
         serviceRecommendation.update(
                 null,
                 null,
@@ -143,8 +136,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should keep original values when all parameters are null")
-    void shouldKeepOriginalValuesWhenAllParametersAreNull() {
+    void update_AllParametersNull_ShouldKeepOriginalValues() {
         serviceRecommendation.update(
                 null,
                 null,
@@ -159,8 +151,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should throw exception when updated name is invalid")
-    void shouldThrowExceptionWhenUpdatedNameIsInvalid() {
+    void update_InvalidName_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
                 () -> serviceRecommendation.update(
@@ -173,8 +164,7 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    @DisplayName("Should throw exception when updated description is invalid")
-    void shouldThrowExceptionWhenUpdatedDescriptionIsInvalid() {
+    void update_InvalidDescription_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
                 () -> serviceRecommendation.update(
@@ -188,8 +178,7 @@ class ServiceRecommendationTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"0", "-1"})
-    @DisplayName("Should throw exception when updated price is invalid")
-    void shouldThrowExceptionWhenUpdatedPriceIsInvalid(String price) {
+    void update_InvalidPrice_ShouldThrowException(String price) {
         assertThrows(
                 InvalidPriceException.class,
                 () -> serviceRecommendation.update(
