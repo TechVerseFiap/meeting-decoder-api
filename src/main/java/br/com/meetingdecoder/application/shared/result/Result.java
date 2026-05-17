@@ -1,7 +1,7 @@
-package br.com.meetingdecoder.domain.shared.result;
+package br.com.meetingdecoder.application.shared.result;
 
-import br.com.meetingdecoder.domain.shared.error.DomainError;
-import br.com.meetingdecoder.domain.shared.error.ErrorAccumulator;
+import br.com.meetingdecoder.application.shared.error.DomainError;
+import br.com.meetingdecoder.application.shared.error.ErrorAccumulator;
 
 import java.util.List;
 
@@ -30,16 +30,20 @@ public class Result<T> {
         return new Result<>(data, null);
     }
 
+    public static Result<Void> success() {
+        return new Result<>(null, null);
+    }
+
     public static <T> Result<T> failure(ErrorAccumulator errors) {
         return new Result<>(null, errors);
     }
 
     public boolean isSuccess() {
-        return errors == null;
+        return !isFailure();
     }
 
     public boolean isFailure() {
-        return errors.hasErrors();
+        return errors != null && errors.hasErrors();
     }
 
     public T getData() {
