@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class ServiceRecommendation {
-    private UUID id;
+    private final UUID id;
     private String name;
     private ServiceCategory category;
     private String description;
@@ -47,5 +47,48 @@ public class ServiceRecommendation {
             BigDecimal price
     ) {
         return new ServiceRecommendation(name, category, description, price);
+    }
+
+    public void update(
+            String name,
+            ServiceCategory category,
+            String description,
+            BigDecimal price
+    ) {
+        if (name != null) {
+            DomainValidation.notBlank(name, "name");
+            this.name = name;
+        }
+        if (category != null) {
+            this.category = category;
+        }
+        if (description != null) {
+            DomainValidation.notBlank(name, "description");
+            this.description = description;
+        }
+        if (price != null) {
+            DomainValidation.positive(price, "price");
+            this.price = price;
+        }
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ServiceCategory getCategory() {
+        return category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public BigDecimal getPrice() {
+        return price;
     }
 }
