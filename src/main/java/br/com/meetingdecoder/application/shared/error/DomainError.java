@@ -1,15 +1,15 @@
 package br.com.meetingdecoder.application.shared.error;
 
 public class DomainError {
-    private String code;
-    private String message;
+    private final DomainErrorCode code;
+    private final String message;
 
-    private DomainError(String code, String message) {
+    private DomainError(DomainErrorCode code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public static DomainError create(String code, String message) {
+    public static DomainError create(DomainErrorCode code, String message) {
         return new DomainError(code, message);
     }
 
