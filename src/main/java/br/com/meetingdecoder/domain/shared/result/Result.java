@@ -10,8 +10,20 @@ public class Result<T> {
     private final ErrorAccumulator errors;
 
     private Result(T data, ErrorAccumulator errors) {
+        validate(data, errors);
         this.data = data;
         this.errors = errors;
+    }
+
+    private void validate(T data, ErrorAccumulator errors) {
+        boolean hasData = data != null;
+        boolean hasErrors = errors != null;
+
+        if (hasData == hasErrors) {
+            throw new IllegalStateException(
+                    "Result must contain either data or errors"
+            );
+        }
     }
 
     public static <T> Result<T> success(T data) {
