@@ -7,5 +7,4 @@ import java.util.UUID;
 
 public interface GetServiceRecommendationUseCase {
     Result<ServiceRecommendationResponse> byId(UUID id);
-    Result<ServiceRecommendationResponse> byName(String name);
 }

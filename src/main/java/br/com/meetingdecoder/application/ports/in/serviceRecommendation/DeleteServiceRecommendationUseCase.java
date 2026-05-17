@@ -6,5 +6,4 @@ import java.util.UUID;
 
 public interface DeleteServiceRecommendationUseCase {
     Result<Void> byId(UUID id);
-    Result<Void> byName(String name);
 }
