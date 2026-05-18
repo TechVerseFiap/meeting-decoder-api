@@ -4,7 +4,6 @@ import br.com.meetingdecoder.application.shared.enums.SortDirection;
 import br.com.meetingdecoder.domain.enums.ServiceCategory;
 
 public record QueryOptions(
-        SortDirection direction,
-        ServiceCategory category
+        SortDirection direction
 ) {
 }
