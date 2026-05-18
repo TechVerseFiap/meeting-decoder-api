@@ -15,6 +15,11 @@ public class Result<T> {
         this.errors = errors;
     }
 
+    private Result(T data, DomainError error) {
+        this.data = data;
+        this.errors = new ErrorAccumulator(error);
+    }
+
     private void validate(T data, ErrorAccumulator errors) {
         boolean hasData = data != null;
         boolean hasErrors = errors != null;
@@ -27,11 +32,11 @@ public class Result<T> {
     }
 
     public static <T> Result<T> success(T data) {
-        return new Result<>(data, null);
+        return new Result<>(data, (DomainError) null);
     }
 
     public static Result<Void> success() {
-        return new Result<>(null, null);
+        return new Result<>(null, (DomainError) null);
     }
 
     public static <T> Result<T> failure(ErrorAccumulator errors) {

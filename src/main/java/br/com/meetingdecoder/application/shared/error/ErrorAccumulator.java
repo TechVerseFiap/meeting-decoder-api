@@ -7,6 +7,12 @@ import java.util.List;
 public class ErrorAccumulator {
     private final List<DomainError> errors = new ArrayList<>();
 
+    public ErrorAccumulator() {}
+
+    public ErrorAccumulator(DomainError error) {
+        add(error);
+    }
+
     public void add(DomainError error) {
         errors.add(error);
     }
