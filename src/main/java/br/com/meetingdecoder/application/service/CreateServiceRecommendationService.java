@@ -21,9 +21,7 @@ public class CreateServiceRecommendationService implements CreateServiceRecommen
         boolean alreadyExists = serviceRecommendationRepository.existsByName(payload.name());
         
         if (alreadyExists) {
-            ErrorAccumulator errors = new ErrorAccumulator();
-            errors.add(DomainErrorFactory.alreadyExists("name"));
-            return Result.failure(errors);
+            return Result.failure(DomainErrorFactory.alreadyExists("name"));
         }
 
         ServiceRecommendation serviceRecommendation = ServiceRecommendation.create(
