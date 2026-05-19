@@ -10,6 +10,7 @@ import java.util.UUID;
 public interface ServiceRecommendationRepository {
     ServiceRecommendation save(ServiceRecommendation serviceRecommendation);
     boolean existsById(UUID id);
+    boolean existsByName(String name);
     Optional<ServiceRecommendation> findById(UUID id);
     List<ServiceRecommendation> findAll(QueryOptions queryOptions);
     void deleteById(UUID id);
