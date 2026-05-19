@@ -63,7 +63,7 @@ public class ServiceRecommendation {
             this.category = category;
         }
         if (description != null) {
-            DomainValidation.notBlank(name, "description");
+            DomainValidation.notBlank(description, "description");
             this.description = description;
         }
         if (price != null) {
