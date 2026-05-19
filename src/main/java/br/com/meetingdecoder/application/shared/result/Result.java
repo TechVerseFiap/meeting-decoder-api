@@ -43,6 +43,10 @@ public class Result<T> {
         return new Result<>(null, errors);
     }
 
+    public static <T> Result<T> failure(DomainError error) {
+        return new Result<>(null, error);
+    }
+
     public boolean isSuccess() {
         return !isFailure();
     }
