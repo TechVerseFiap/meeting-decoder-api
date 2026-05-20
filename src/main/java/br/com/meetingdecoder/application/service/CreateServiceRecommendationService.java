@@ -19,21 +19,17 @@ public class CreateServiceRecommendationService implements CreateServiceRecommen
     @Override
     public Result<ServiceRecommendationResponse> execute(CreateServiceRecommendationCommand payload) {
         boolean alreadyExists = serviceRecommendationRepository.existsByName(payload.name());
-        
         if (alreadyExists) {
             return Result.failure(DomainErrorFactory.alreadyExists("name"));
         }
-
         ServiceRecommendation serviceRecommendation = ServiceRecommendation.create(
             payload.name(), 
             payload.category(), 
             payload.description(), 
             payload.price()
         );
-
         ServiceRecommendation saved = serviceRecommendationRepository.save(serviceRecommendation);
         ServiceRecommendationResponse response = ServiceRecommendationResponse.from(saved);
-
         return Result.success(response);
     }
 }
