@@ -4,7 +4,7 @@ import br.com.meetingdecoder.domain.enums.ServiceCategory;
 
 import java.math.BigDecimal;
 
-public record CreateServiceRecommendationCommand(
+public record CreateProductCommand(
         String name,
         ServiceCategory category,
         String description,

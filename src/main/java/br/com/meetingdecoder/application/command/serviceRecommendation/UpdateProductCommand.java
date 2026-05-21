@@ -4,7 +4,7 @@ import br.com.meetingdecoder.domain.enums.ServiceCategory;
 
 import java.math.BigDecimal;
 
-public record UpdateServiceRecommendationCommand(
+public record UpdateProductCommand(
         String name,
         ServiceCategory category,
         String description,
@@ -41,8 +41,8 @@ public record UpdateServiceRecommendationCommand(
             return this;
         }
 
-        public UpdateServiceRecommendationCommand build() {
-            return new UpdateServiceRecommendationCommand(name, category, description, price);
+        public UpdateProductCommand build() {
+            return new UpdateProductCommand(name, category, description, price);
         }
     }
 }

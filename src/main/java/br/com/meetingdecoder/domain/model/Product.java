@@ -6,14 +6,14 @@ import br.com.meetingdecoder.domain.validation.DomainValidation;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-public class ServiceRecommendation {
+public class Product {
     private final UUID id;
     private String name;
     private ServiceCategory category;
     private String description;
     private BigDecimal price;
 
-    private ServiceRecommendation(
+    private Product(
             String name,
             ServiceCategory category,
             String description,
@@ -40,13 +40,13 @@ public class ServiceRecommendation {
         DomainValidation.positive(price, "price");
     }
 
-    public static ServiceRecommendation create(
+    public static Product create(
             String name,
             ServiceCategory category,
             String description,
             BigDecimal price
     ) {
-        return new ServiceRecommendation(name, category, description, price);
+        return new Product(name, category, description, price);
     }
 
     public void update(
