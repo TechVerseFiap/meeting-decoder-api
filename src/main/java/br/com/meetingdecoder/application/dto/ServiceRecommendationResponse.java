@@ -4,6 +4,7 @@ import br.com.meetingdecoder.domain.enums.ServiceCategory;
 import br.com.meetingdecoder.domain.model.ServiceRecommendation;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 public record ServiceRecommendationResponse(
@@ -23,5 +24,13 @@ public record ServiceRecommendationResponse(
                 payload.getDescription(),
                 payload.getPrice()
         );
+    }
+
+    public static List<ServiceRecommendationResponse> from(
+            List<ServiceRecommendation> list
+    ) {
+        return list.stream()
+                .map(ServiceRecommendationResponse::from)
+                .toList();
     }
 }

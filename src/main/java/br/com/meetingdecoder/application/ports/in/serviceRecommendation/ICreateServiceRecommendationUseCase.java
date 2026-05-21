@@ -4,6 +4,6 @@ import br.com.meetingdecoder.application.command.serviceRecommendation.CreateSer
 import br.com.meetingdecoder.application.dto.ServiceRecommendationResponse;
 import br.com.meetingdecoder.application.shared.result.Result;
 
-public interface CreateServiceRecommendationUseCase {
+public interface ICreateServiceRecommendationUseCase {
     Result<ServiceRecommendationResponse> execute(CreateServiceRecommendationCommand payload);
 }

@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface ServiceRecommendationRepository {
+public interface IServiceRecommendationRepository {
     ServiceRecommendation save(ServiceRecommendation serviceRecommendation);
     boolean existsById(UUID id);
     boolean existsByName(String name);
