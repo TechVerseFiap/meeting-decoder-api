@@ -4,7 +4,6 @@ import br.com.meetingdecoder.domain.enums.ServiceCategory;
 import br.com.meetingdecoder.domain.exception.EmptyFieldException;
 import br.com.meetingdecoder.domain.exception.InvalidPriceException;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.NullAndEmptySource;
@@ -14,18 +13,18 @@ import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ServiceRecommendationTest {
+class ProductTest {
 
     private static final String DEFAULT_NAME = "Prometheus";
     private static final ServiceCategory DEFAULT_CATEGORY = ServiceCategory.ERP;
     private static final String DEFAULT_DESCRIPTION = "Descrição do serviço Prometheus";
     private static final BigDecimal DEFAULT_PRICE = new BigDecimal("299.90");
 
-    private ServiceRecommendation serviceRecommendation;
+    private Product product;
 
     @BeforeEach
     void setUp() {
-        serviceRecommendation = ServiceRecommendation.create(
+        product = Product.create(
                 DEFAULT_NAME,
                 DEFAULT_CATEGORY,
                 DEFAULT_DESCRIPTION,
@@ -34,9 +33,9 @@ class ServiceRecommendationTest {
     }
 
     @Test
-    void create_ValidParameters_ShouldCreateServiceRecommendation() {
-        ServiceRecommendation service =
-                ServiceRecommendation.create(
+    void create_ValidParameters_ShouldCreateProduct() {
+        Product service =
+                Product.create(
                         DEFAULT_NAME,
                         DEFAULT_CATEGORY,
                         DEFAULT_DESCRIPTION,
@@ -55,7 +54,7 @@ class ServiceRecommendationTest {
     void create_InvalidName_ShouldThrowException(String name) {
         assertThrows(
                 EmptyFieldException.class,
-                () -> ServiceRecommendation.create(
+                () -> Product.create(
                         name,
                         DEFAULT_CATEGORY,
                         DEFAULT_DESCRIPTION,
@@ -68,7 +67,7 @@ class ServiceRecommendationTest {
     void create_NullCategory_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
-                () -> ServiceRecommendation.create(
+                () -> Product.create(
                         DEFAULT_NAME,
                         null,
                         DEFAULT_DESCRIPTION,
@@ -82,7 +81,7 @@ class ServiceRecommendationTest {
     void create_InvalidDescription_ShouldThrowException(String description) {
         assertThrows(
                 EmptyFieldException.class,
-                () -> ServiceRecommendation.create(
+                () -> Product.create(
                         DEFAULT_NAME,
                         DEFAULT_CATEGORY,
                         description,
@@ -96,7 +95,7 @@ class ServiceRecommendationTest {
     void create_InvalidPrice_ShouldThrowException(String price) {
         assertThrows(
                 InvalidPriceException.class,
-                () -> ServiceRecommendation.create(
+                () -> Product.create(
                         DEFAULT_NAME,
                         DEFAULT_CATEGORY,
                         DEFAULT_DESCRIPTION,
@@ -107,54 +106,54 @@ class ServiceRecommendationTest {
 
     @Test
     void update_ValidParameters_ShouldUpdateAllFields() {
-        serviceRecommendation.update(
+        product.update(
                 "Datasul",
                 ServiceCategory.FINANCE,
                 "Descrição do serviço financeiro Datasul",
                 new BigDecimal("199.99")
         );
 
-        assertEquals("Datasul", serviceRecommendation.getName());
-        assertEquals(ServiceCategory.FINANCE, serviceRecommendation.getCategory());
-        assertEquals("Descrição do serviço financeiro Datasul", serviceRecommendation.getDescription());
-        assertEquals(new BigDecimal("199.99"), serviceRecommendation.getPrice());
+        assertEquals("Datasul", product.getName());
+        assertEquals(ServiceCategory.FINANCE, product.getCategory());
+        assertEquals("Descrição do serviço financeiro Datasul", product.getDescription());
+        assertEquals(new BigDecimal("199.99"), product.getPrice());
     }
 
     @Test
     void update_OnlyDescriptionAndPrice_ShouldUpdateSpecifiedFields() {
-        serviceRecommendation.update(
+        product.update(
                 null,
                 null,
                 "Descrição do serviço ERP Prometheus",
                 new BigDecimal("399.99")
         );
 
-        assertEquals(DEFAULT_NAME, serviceRecommendation.getName());
-        assertEquals(DEFAULT_CATEGORY, serviceRecommendation.getCategory());
-        assertEquals("Descrição do serviço ERP Prometheus", serviceRecommendation.getDescription());
-        assertEquals(new BigDecimal("399.99"), serviceRecommendation.getPrice());
+        assertEquals(DEFAULT_NAME, product.getName());
+        assertEquals(DEFAULT_CATEGORY, product.getCategory());
+        assertEquals("Descrição do serviço ERP Prometheus", product.getDescription());
+        assertEquals(new BigDecimal("399.99"), product.getPrice());
     }
 
     @Test
     void update_AllParametersNull_ShouldKeepOriginalValues() {
-        serviceRecommendation.update(
+        product.update(
                 null,
                 null,
                 null,
                 null
         );
 
-        assertEquals(DEFAULT_NAME, serviceRecommendation.getName());
-        assertEquals(DEFAULT_CATEGORY, serviceRecommendation.getCategory());
-        assertEquals(DEFAULT_DESCRIPTION, serviceRecommendation.getDescription());
-        assertEquals(DEFAULT_PRICE, serviceRecommendation.getPrice());
+        assertEquals(DEFAULT_NAME, product.getName());
+        assertEquals(DEFAULT_CATEGORY, product.getCategory());
+        assertEquals(DEFAULT_DESCRIPTION, product.getDescription());
+        assertEquals(DEFAULT_PRICE, product.getPrice());
     }
 
     @Test
     void update_InvalidName_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
-                () -> serviceRecommendation.update(
+                () -> product.update(
                        "",
                        null,
                        null,
@@ -167,7 +166,7 @@ class ServiceRecommendationTest {
     void update_InvalidDescription_ShouldThrowException() {
         assertThrows(
                 EmptyFieldException.class,
-                () -> serviceRecommendation.update(
+                () -> product.update(
                         null,
                         null,
                         "",
@@ -181,7 +180,7 @@ class ServiceRecommendationTest {
     void update_InvalidPrice_ShouldThrowException(String price) {
         assertThrows(
                 InvalidPriceException.class,
-                () -> serviceRecommendation.update(
+                () -> product.update(
                         null,
                         null,
                         null,

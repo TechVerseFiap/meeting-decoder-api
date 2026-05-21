@@ -1,23 +1,23 @@
 package br.com.meetingdecoder.application.dto;
 
 import br.com.meetingdecoder.domain.enums.ServiceCategory;
-import br.com.meetingdecoder.domain.model.ServiceRecommendation;
+import br.com.meetingdecoder.domain.model.Product;
 
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
-public record ServiceRecommendationResponse(
+public record ProductResponse(
         UUID id,
         String name,
         ServiceCategory category,
         String description,
         BigDecimal price
 ) {
-    public static ServiceRecommendationResponse from(
-            ServiceRecommendation payload
+    public static ProductResponse from(
+            Product payload
     ) {
-        return new ServiceRecommendationResponse(
+        return new ProductResponse(
                 payload.getId(),
                 payload.getName(),
                 payload.getCategory(),
@@ -26,11 +26,11 @@ public record ServiceRecommendationResponse(
         );
     }
 
-    public static List<ServiceRecommendationResponse> from(
-            List<ServiceRecommendation> list
+    public static List<ProductResponse> from(
+            List<Product> list
     ) {
         return list.stream()
-                .map(ServiceRecommendationResponse::from)
+                .map(ProductResponse::from)
                 .toList();
     }
 }

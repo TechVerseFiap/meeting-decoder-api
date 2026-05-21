@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.infraestructure.configuration;
 
 import br.com.meetingdecoder.application.ports.in.serviceRecommendation.*;
-import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
+import br.com.meetingdecoder.application.ports.out.IProductRepository;
 import br.com.meetingdecoder.application.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -10,37 +10,37 @@ import org.springframework.context.annotation.Configuration;
 public class DependencyInjectionConfiguration {
 
     @Bean
-    public ICreateServiceRecommendationUseCase createServiceRecommendationUseCase(
-            IServiceRecommendationRepository serviceRecommendationRepository
+    public ICreateProductUseCase createServiceRecommendationUseCase(
+            IProductRepository productRepository
     ) {
-        return new CreateServiceRecommendationUseCase(serviceRecommendationRepository);
+        return new CreateProductUseCase(productRepository);
     }
 
     @Bean
-    public IGetServiceRecommendationUseCase getServiceRecommendationUseCase(
-            IServiceRecommendationRepository serviceRecommendationRepository
+    public IGetProductUseCase getServiceRecommendationUseCase(
+            IProductRepository productRepository
     ) {
-        return new GetServiceRecommendationUseCase(serviceRecommendationRepository);
+        return new GetProductUseCase(productRepository);
     }
 
     @Bean
-    public IListServiceRecommendationUseCase listServiceRecommendationUseCase(
-            IServiceRecommendationRepository serviceRecommendationRepository
+    public IListProductUseCase listServiceRecommendationUseCase(
+            IProductRepository productRepository
     ) {
-        return new ListServiceRecommendationUseCase(serviceRecommendationRepository);
+        return new ListProductUseCase(productRepository);
     }
 
     @Bean
-    public IUpdateServiceRecommendationUseCase updateServiceRecommendationUseCase(
-            IServiceRecommendationRepository serviceRecommendationRepository
+    public IUpdateProductUseCase updateServiceRecommendationUseCase(
+            IProductRepository productRepository
     ) {
-        return new UpdateServiceRecommendationUseCase(serviceRecommendationRepository);
+        return new UpdateProductUseCase(productRepository);
     }
 
     @Bean
-    public IDeleteServiceRecommendationUseCase deleteServiceRecommendationUseCase(
-            IServiceRecommendationRepository serviceRecommendationRepository
+    public IDeleteProductUseCase deleteServiceRecommendationUseCase(
+            IProductRepository productRepository
     ) {
-        return new DeleteServiceRecommendationUseCase(serviceRecommendationRepository);
+        return new DeleteProductUseCase(productRepository);
     }
 }
