@@ -2,17 +2,16 @@ package br.com.meetingdecoder.application.service;
 
 import br.com.meetingdecoder.application.command.serviceRecommendation.CreateServiceRecommendationCommand;
 import br.com.meetingdecoder.application.dto.ServiceRecommendationResponse;
-import br.com.meetingdecoder.application.ports.in.serviceRecommendation.CreateServiceRecommendationUseCase;
-import br.com.meetingdecoder.application.ports.out.ServiceRecommendationRepository;
+import br.com.meetingdecoder.application.ports.in.serviceRecommendation.ICreateServiceRecommendationUseCase;
+import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
 import br.com.meetingdecoder.application.shared.error.DomainErrorFactory;
-import br.com.meetingdecoder.application.shared.error.ErrorAccumulator;
 import br.com.meetingdecoder.application.shared.result.Result;
 import br.com.meetingdecoder.domain.model.ServiceRecommendation;
 
-public class CreateServiceRecommendationService implements CreateServiceRecommendationUseCase {
-    private final ServiceRecommendationRepository serviceRecommendationRepository;
+public class CreateServiceRecommendationUseCase implements ICreateServiceRecommendationUseCase {
+    private final IServiceRecommendationRepository serviceRecommendationRepository;
 
-    public CreateServiceRecommendationService (ServiceRecommendationRepository serviceRecommendationRepository) {
+    public CreateServiceRecommendationUseCase(IServiceRecommendationRepository serviceRecommendationRepository) {
         this.serviceRecommendationRepository = serviceRecommendationRepository;
     }
 

@@ -2,8 +2,8 @@ package br.com.meetingdecoder.application.service;
 
 import br.com.meetingdecoder.application.command.serviceRecommendation.UpdateServiceRecommendationCommand;
 import br.com.meetingdecoder.application.dto.ServiceRecommendationResponse;
-import br.com.meetingdecoder.application.ports.in.serviceRecommendation.UpdateServiceRecommendationUseCase;
-import br.com.meetingdecoder.application.ports.out.ServiceRecommendationRepository;
+import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IUpdateServiceRecommendationUseCase;
+import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
 import br.com.meetingdecoder.application.shared.error.DomainErrorFactory;
 import br.com.meetingdecoder.application.shared.result.Result;
 import br.com.meetingdecoder.domain.model.ServiceRecommendation;
@@ -11,11 +11,11 @@ import br.com.meetingdecoder.domain.model.ServiceRecommendation;
 import java.util.Optional;
 import java.util.UUID;
 
-public class UpdateServiceRecommendationService implements UpdateServiceRecommendationUseCase {
+public class UpdateServiceRecommendationUseCase implements IUpdateServiceRecommendationUseCase {
 
-    private final ServiceRecommendationRepository serviceRecommendationRepository;
+    private final IServiceRecommendationRepository serviceRecommendationRepository;
 
-    public UpdateServiceRecommendationService (ServiceRecommendationRepository serviceRecommendationRepository) {
+    public UpdateServiceRecommendationUseCase(IServiceRecommendationRepository serviceRecommendationRepository) {
         this.serviceRecommendationRepository = serviceRecommendationRepository;
     }
 

@@ -4,6 +4,6 @@ import br.com.meetingdecoder.application.shared.result.Result;
 
 import java.util.UUID;
 
-public interface DeleteServiceRecommendationUseCase {
+public interface IDeleteServiceRecommendationUseCase {
     Result<Void> byId(UUID id);
 }

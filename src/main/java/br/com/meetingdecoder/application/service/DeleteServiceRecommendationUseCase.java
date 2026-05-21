@@ -1,18 +1,17 @@
 package br.com.meetingdecoder.application.service;
 
-import br.com.meetingdecoder.application.ports.in.serviceRecommendation.DeleteServiceRecommendationUseCase;
-import br.com.meetingdecoder.application.ports.out.ServiceRecommendationRepository;
-import br.com.meetingdecoder.application.shared.error.DomainError;
+import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IDeleteServiceRecommendationUseCase;
+import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
 import br.com.meetingdecoder.application.shared.error.DomainErrorFactory;
 import br.com.meetingdecoder.application.shared.result.Result;
 
 import java.util.UUID;
 
-public class DeleteServiceRecommendationService implements DeleteServiceRecommendationUseCase {
+public class DeleteServiceRecommendationUseCase implements IDeleteServiceRecommendationUseCase {
 
-    private final ServiceRecommendationRepository serviceRecommendationRepository;
+    private final IServiceRecommendationRepository serviceRecommendationRepository;
 
-    public DeleteServiceRecommendationService (ServiceRecommendationRepository serviceRecommendationRepository) {
+    public DeleteServiceRecommendationUseCase(IServiceRecommendationRepository serviceRecommendationRepository) {
         this.serviceRecommendationRepository = serviceRecommendationRepository;
     }
 

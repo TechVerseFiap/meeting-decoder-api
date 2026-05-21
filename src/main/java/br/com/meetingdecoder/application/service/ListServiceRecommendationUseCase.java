@@ -2,19 +2,18 @@ package br.com.meetingdecoder.application.service;
 
 import br.com.meetingdecoder.application.dto.QueryOptions;
 import br.com.meetingdecoder.application.dto.ServiceRecommendationResponse;
-import br.com.meetingdecoder.application.ports.in.serviceRecommendation.ListServiceRecommendationUseCase;
-import br.com.meetingdecoder.application.ports.out.ServiceRecommendationRepository;
+import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IListServiceRecommendationUseCase;
+import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
 import br.com.meetingdecoder.application.shared.result.Result;
 import br.com.meetingdecoder.domain.model.ServiceRecommendation;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class ListServiceRecommendationService implements ListServiceRecommendationUseCase {
+public class ListServiceRecommendationUseCase implements IListServiceRecommendationUseCase {
 
-    private final ServiceRecommendationRepository serviceRecommendationRepository;
+    private final IServiceRecommendationRepository serviceRecommendationRepository;
 
-    public ListServiceRecommendationService (ServiceRecommendationRepository serviceRecommendationRepository) {
+    public ListServiceRecommendationUseCase(IServiceRecommendationRepository serviceRecommendationRepository) {
         this.serviceRecommendationRepository = serviceRecommendationRepository;
     }
 

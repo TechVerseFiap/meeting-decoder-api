@@ -1,8 +1,8 @@
 package br.com.meetingdecoder.application.service;
 
 import br.com.meetingdecoder.application.dto.ServiceRecommendationResponse;
-import br.com.meetingdecoder.application.ports.in.serviceRecommendation.GetServiceRecommendationUseCase;
-import br.com.meetingdecoder.application.ports.out.ServiceRecommendationRepository;
+import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IGetServiceRecommendationUseCase;
+import br.com.meetingdecoder.application.ports.out.IServiceRecommendationRepository;
 import br.com.meetingdecoder.application.shared.error.DomainErrorFactory;
 import br.com.meetingdecoder.application.shared.result.Result;
 import br.com.meetingdecoder.domain.model.ServiceRecommendation;
@@ -10,11 +10,11 @@ import br.com.meetingdecoder.domain.model.ServiceRecommendation;
 import java.util.Optional;
 import java.util.UUID;
 
-public class GetServiceRecommendationService implements GetServiceRecommendationUseCase {
+public class GetServiceRecommendationUseCase implements IGetServiceRecommendationUseCase {
 
-    private final ServiceRecommendationRepository serviceRecommendationRepository;
+    private final IServiceRecommendationRepository serviceRecommendationRepository;
 
-    public GetServiceRecommendationService (ServiceRecommendationRepository serviceRecommendationRepository) {
+    public GetServiceRecommendationUseCase(IServiceRecommendationRepository serviceRecommendationRepository) {
         this.serviceRecommendationRepository = serviceRecommendationRepository;
     }
 

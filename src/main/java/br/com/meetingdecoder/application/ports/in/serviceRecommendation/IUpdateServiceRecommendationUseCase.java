@@ -6,6 +6,6 @@ import br.com.meetingdecoder.application.shared.result.Result;
 
 import java.util.UUID;
 
-public interface UpdateServiceRecommendationUseCase {
+public interface IUpdateServiceRecommendationUseCase {
     Result<ServiceRecommendationResponse> execute(UUID id, UpdateServiceRecommendationCommand payload);
 }

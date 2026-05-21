@@ -5,6 +5,6 @@ import br.com.meetingdecoder.application.shared.result.Result;
 
 import java.util.UUID;
 
-public interface GetServiceRecommendationUseCase {
+public interface IGetServiceRecommendationUseCase {
     Result<ServiceRecommendationResponse> byId(UUID id);
 }
