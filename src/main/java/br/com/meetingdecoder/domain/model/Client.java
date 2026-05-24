@@ -3,7 +3,7 @@ package br.com.meetingdecoder.domain.model;
 import br.com.meetingdecoder.domain.enums.ClientIndustry;
 import br.com.meetingdecoder.domain.enums.CompanySize;
 import br.com.meetingdecoder.domain.enums.CurrentSystem;
-import br.com.meetingdecoder.domain.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
 
 import java.util.UUID;
 

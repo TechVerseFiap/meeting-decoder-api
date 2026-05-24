@@ -1,7 +1,7 @@
-package br.com.meetingdecoder.application.ports.out;
+package br.com.meetingdecoder.domain.insight.repository;
 
 import br.com.meetingdecoder.application.dto.QueryOptions;
-import br.com.meetingdecoder.domain.model.Product;
+import br.com.meetingdecoder.domain.insight.model.Product;
 
 import java.util.List;
 import java.util.Optional;

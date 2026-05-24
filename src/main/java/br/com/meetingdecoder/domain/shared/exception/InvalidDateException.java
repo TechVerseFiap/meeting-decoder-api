@@ -1,6 +1,4 @@
-package br.com.meetingdecoder.domain.exception;
-
-import java.time.LocalDateTime;
+package br.com.meetingdecoder.domain.shared.exception;
 
 public class InvalidDateException extends DomainException {
     public InvalidDateException(String fieldName) {

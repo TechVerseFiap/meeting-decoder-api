@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.domain.model;
 
 import br.com.meetingdecoder.domain.enums.Department;
-import br.com.meetingdecoder.domain.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
 
 import java.util.UUID;
 

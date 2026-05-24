@@ -1,4 +1,4 @@
-package br.com.meetingdecoder.domain.exception;
+package br.com.meetingdecoder.domain.shared.exception;
 
 public class InvalidPriceException extends DomainException {
     public InvalidPriceException(String fieldName) {

@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.application.service;
 
 import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IDeleteProductUseCase;
-import br.com.meetingdecoder.application.ports.out.IProductRepository;
+import br.com.meetingdecoder.domain.insight.repository.IProductRepository;
 import br.com.meetingdecoder.application.shared.error.DomainErrorFactory;
 import br.com.meetingdecoder.application.shared.result.Result;
 

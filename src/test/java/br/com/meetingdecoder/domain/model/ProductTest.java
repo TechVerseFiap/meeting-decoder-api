@@ -1,8 +1,9 @@
 package br.com.meetingdecoder.domain.model;
 
 import br.com.meetingdecoder.domain.enums.ServiceCategory;
-import br.com.meetingdecoder.domain.exception.EmptyFieldException;
-import br.com.meetingdecoder.domain.exception.InvalidPriceException;
+import br.com.meetingdecoder.domain.insight.model.Product;
+import br.com.meetingdecoder.domain.shared.exception.EmptyFieldException;
+import br.com.meetingdecoder.domain.shared.exception.InvalidPriceException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

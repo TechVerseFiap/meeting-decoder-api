@@ -1,8 +1,8 @@
-package br.com.meetingdecoder.domain.validation;
+package br.com.meetingdecoder.domain.shared.validation;
 
-import br.com.meetingdecoder.domain.exception.EmptyFieldException;
-import br.com.meetingdecoder.domain.exception.InvalidDateException;
-import br.com.meetingdecoder.domain.exception.InvalidPriceException;
+import br.com.meetingdecoder.domain.shared.exception.EmptyFieldException;
+import br.com.meetingdecoder.domain.shared.exception.InvalidDateException;
+import br.com.meetingdecoder.domain.shared.exception.InvalidPriceException;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;

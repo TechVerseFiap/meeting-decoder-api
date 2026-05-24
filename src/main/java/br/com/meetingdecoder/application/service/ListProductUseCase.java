@@ -3,9 +3,9 @@ package br.com.meetingdecoder.application.service;
 import br.com.meetingdecoder.application.dto.QueryOptions;
 import br.com.meetingdecoder.application.dto.ProductResponse;
 import br.com.meetingdecoder.application.ports.in.serviceRecommendation.IListProductUseCase;
-import br.com.meetingdecoder.application.ports.out.IProductRepository;
+import br.com.meetingdecoder.domain.insight.repository.IProductRepository;
 import br.com.meetingdecoder.application.shared.result.Result;
-import br.com.meetingdecoder.domain.model.Product;
+import br.com.meetingdecoder.domain.insight.model.Product;
 
 import java.util.List;
 
