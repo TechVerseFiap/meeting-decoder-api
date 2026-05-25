@@ -4,5 +4,6 @@ public enum ClientSize {
     MICRO,
     SMALL,
     MEDIUM,
-    LARGE
+    LARGE,
+    INDETERMINATE
 }
