@@ -9,7 +9,6 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class Seller {
-
     private final SellerId id;
     private SellerId managerId;
     private SellerType type;
@@ -30,7 +29,6 @@ public class Seller {
             LocalDateTime updatedAt
     ) {
         validate(id, type, name, email, createdAt);
-
         this.id = id;
         this.managerId = managerId;
         this.type = type;
