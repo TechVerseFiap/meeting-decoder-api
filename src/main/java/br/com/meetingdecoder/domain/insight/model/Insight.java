@@ -1,7 +1,10 @@
 package br.com.meetingdecoder.domain.insight.model;
 
 import br.com.meetingdecoder.domain.insight.valueobject.*;
+<<<<<<< Updated upstream
 import br.com.meetingdecoder.domain.shared.exception.DomainValidationException;
+=======
+>>>>>>> Stashed changes
 import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 

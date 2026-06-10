@@ -6,6 +6,10 @@ import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import java.time.Instant;
 import java.util.UUID;
 
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
 public final class InsightTag {
     private final InsightTagId id;
     private final String nome;
