@@ -6,7 +6,8 @@ public record InsightId(
         UUID value
 ) {
     public InsightId {
-        // value shouldn't be null
+        if (value == null)
+            throw new IllegalArgumentException("");
     }
 
     public static InsightId of(UUID value) { return new InsightId(value); }
