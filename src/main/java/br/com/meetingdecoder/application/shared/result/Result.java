@@ -17,7 +17,9 @@ public class Result<T> {
 
     private Result(T data, DomainError error) {
         this.data = data;
-        this.errors = new ErrorCollector().add(error);
+        this.errors = ErrorCollector.builder()
+                .add(error)
+                .build();
     }
 
     private void validate(T data, ErrorCollector errors) {

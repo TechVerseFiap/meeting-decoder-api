@@ -131,7 +131,7 @@ public final class Insight {
             List<ProdutoCorrelacao> produtos,
             List<TagCorrelacao> tags
     ) {
-        new ErrorCollector()
+        ErrorCollector.builder()
                 .requireNotNull(transcricaoId, "transcricaoId", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(sentimento, "sentimento", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(descricao, "descricao", DomainErrorCode.EMPTY_FIELD)

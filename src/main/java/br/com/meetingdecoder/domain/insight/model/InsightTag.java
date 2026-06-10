@@ -48,7 +48,7 @@ public final class InsightTag {
      * @throws DomainValidationException if validation fails
      */
     public static InsightTag create(String nome) {
-        new ErrorCollector()
+        ErrorCollector.builder()
                 .requireNotNull(nome, "nome", DomainErrorCode.EMPTY_FIELD)
                 .requireNotBlank(nome, "nome", DomainErrorCode.EMPTY_FIELD)
                 .validate();

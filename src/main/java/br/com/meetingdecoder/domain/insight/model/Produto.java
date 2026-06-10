@@ -108,7 +108,7 @@ public final class Produto {
             faixaPreco = new FaixaPreco(faixaPrecoMinimo, faixaPrecoMaximo);
         }
 
-        new ErrorCollector()
+        ErrorCollector.builder()
                 .requireNotNull(nome, "nome", DomainErrorCode.EMPTY_FIELD)
                 .requireNotBlank(nome, "nome", DomainErrorCode.EMPTY_FIELD)
                 .requireMinLessOrEqualMax(faixaPrecoMinimo, faixaPrecoMaximo,

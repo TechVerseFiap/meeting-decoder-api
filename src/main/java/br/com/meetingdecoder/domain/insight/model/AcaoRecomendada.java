@@ -102,7 +102,7 @@ public final class AcaoRecomendada {
             Instant prazo,
             ScoreConfiabilidade scoreConfiabilidade
     ) {
-        new ErrorCollector()
+        ErrorCollector.builder()
                 .requireNotNull(titulo, "titulo", DomainErrorCode.EMPTY_FIELD)
                 .requireNotBlank(titulo, "titulo", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(descricao, "descricao", DomainErrorCode.EMPTY_FIELD)
