@@ -3,7 +3,9 @@ package br.com.meetingdecoder.domain.sale.model;
 import br.com.meetingdecoder.domain.sale.enums.SellerType;
 import br.com.meetingdecoder.domain.sale.valueobject.Email;
 import br.com.meetingdecoder.domain.sale.valueobject.SellerId;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -46,11 +48,13 @@ public class Seller {
             Email email,
             LocalDateTime createdAt
     ) {
-        DomainValidation.notNull(id, "id");
-        DomainValidation.notNull(type, "type");
-        DomainValidation.notBlank(name, "name");
-        DomainValidation.notBlank(email.value(), "email");
-        DomainValidation.notNull(createdAt, "createdAt");
+        ErrorCollector.builder()
+                .requireNotNull(id, "id", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(type, "type", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(name, "name", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(email, "email", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(createdAt, "createdAt", DomainErrorCode.EMPTY_FIELD)
+                .validate();
     }
 
     public static Seller create(
@@ -108,7 +112,7 @@ public class Seller {
     }
 
     public UUID getManagerId() {
-        return managerId.value();
+        return managerId != null ? managerId.value() : null;
     }
 
     public SellerType getType() {

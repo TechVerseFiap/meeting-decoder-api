@@ -6,6 +6,9 @@ public enum DomainErrorCode {
     INVALID_DATE,
     INVALID_RANGE,
     INVALID_SCORE,
+    INVALID_FIELD,
+    INVALID_BILLING_RANGE,
+    INVALID_EMAIL,
     ALREADY_EXISTS,
     NOT_FOUND
 }

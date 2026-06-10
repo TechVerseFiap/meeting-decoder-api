@@ -1,5 +1,10 @@
 package br.com.meetingdecoder.domain.transcription.valueobject;
 
+import br.com.meetingdecoder.domain.sale.valueobject.ClientId;
+import br.com.meetingdecoder.domain.sale.valueobject.SellerId;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
+
 public class Participants {
     private final SellerId sellerId;
     private final ClientId clientId;
@@ -24,11 +29,18 @@ public class Participants {
             SellerId sellerId,
             ClientId clientId
     ) {
-        if (sellerId == null || clientId == null) {
-            throw new IllegalArgumentException(
-                    "Participant must have sellerId and clientId"
-            );
-        }
+        ErrorCollector.builder()
+                .requireNotNull(
+                        sellerId,
+                        "sellerId",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .requireNotNull(
+                        clientId,
+                        "clientId",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .validate();
     }
 
     public SellerId sellerId() {

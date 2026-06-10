@@ -1,6 +1,4 @@
-package br.com.meetingdecoder.domain.insight.model;
-
-import java.util.Objects;
+package br.com.meetingdecoder.domain.insight.valueobject;
 
 /**
  * Value Object representing a confidence score in the range [0.0, 1.0].

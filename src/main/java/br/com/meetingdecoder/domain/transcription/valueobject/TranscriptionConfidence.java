@@ -1,5 +1,7 @@
 package br.com.meetingdecoder.domain.transcription.valueobject;
 
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import br.com.meetingdecoder.domain.transcription.enums.RankingTranscriptionConfidence;
 
 public class TranscriptionConfidence {
@@ -15,9 +17,15 @@ public class TranscriptionConfidence {
     }
 
     private void validate(Double value) {
-        if (value == null || value < 0 || value > 1) {
-            throw new IllegalArgumentException("Value must be between 0 and 1");
-        }
+        ErrorCollector.builder()
+                .requireInRange(
+                        value,
+                        0.0,
+                        1.0,
+                        "value",
+                        DomainErrorCode.INVALID_SCORE
+                )
+                .validate();
     }
 
     private RankingTranscriptionConfidence getRankingConfidence() {

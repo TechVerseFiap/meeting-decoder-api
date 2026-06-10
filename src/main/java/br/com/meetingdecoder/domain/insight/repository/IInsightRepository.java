@@ -1,11 +1,10 @@
 package br.com.meetingdecoder.domain.insight.repository;
 
 import br.com.meetingdecoder.domain.insight.model.Insight;
-import br.com.meetingdecoder.domain.insight.model.InsightId;
+import br.com.meetingdecoder.domain.insight.valueobject.InsightId;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 /**
  * Domain port for reading and querying insights from the repository.

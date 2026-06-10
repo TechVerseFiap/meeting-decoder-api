@@ -1,6 +1,9 @@
 package br.com.meetingdecoder.domain.transcription.model;
 
+import br.com.meetingdecoder.domain.shared.validation.DomainError;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import br.com.meetingdecoder.domain.transcription.valueobject.MeetingId;
 import br.com.meetingdecoder.domain.transcription.valueobject.TranscriptJson;
 import br.com.meetingdecoder.domain.transcription.valueobject.TranscriptionConfidence;
@@ -62,19 +65,26 @@ public class Transcription {
             LocalDateTime processedAt,
             LocalDateTime finishedAt
     ) {
-        DomainValidation.notNull(id, "transcriptionId");
-        DomainValidation.notNull(meetingId, "meetingId");
-        DomainValidation.notBlank(rawText, "rawText");
-        DomainValidation.notBlank(cleanText, "cleanText");
-        DomainValidation.notNull(formattedText, "formattedText");
-        DomainValidation.notNull(modelConfidence, "modelConfidence");
-        DomainValidation.notNull(processedAt, "processedAt");
-        DomainValidation.notNull(finishedAt, "finishedAt");
-        if (finishedAt.isBefore(processedAt)) {
-            throw new IllegalArgumentException(
-                    "finishedAt cannot be before processedAt"
-            );
-        }
+        ErrorCollector.builder()
+                .requireNotNull(id, "transcriptionId", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(meetingId, "meetingId", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(rawText, "rawText", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(cleanText, "cleanText", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(formattedText, "formattedText", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(modelConfidence, "modelConfidence", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(processedAt, "processedAt", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(finishedAt, "finishedAt", DomainErrorCode.EMPTY_FIELD)
+                .check(
+                        processedAt == null
+                                || finishedAt == null
+                                || !finishedAt.isBefore(processedAt),
+                        DomainError.of(
+                                DomainErrorCode.INVALID_RANGE,
+                                "finishedAt",
+                                "finishedAt cannot be before processedAt"
+                        )
+                )
+                .validate();
     }
 
     public static Transcription create(
@@ -109,11 +119,26 @@ public class Transcription {
             LocalDateTime finishedAt
     ) {
         if (rawText != null) {
-            DomainValidation.notBlank(rawText, "rawText");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            rawText,
+                            "rawText",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
+
             this.rawText = rawText;
         }
+
         if (cleanText != null) {
-            DomainValidation.notBlank(cleanText, "cleanText");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            cleanText,
+                            "cleanText",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
+
             this.cleanText = cleanText;
         }
         if (formattedText != null) {
@@ -130,11 +155,16 @@ public class Transcription {
                     processedAt != null
                             ? processedAt
                             : this.processedAt;
-            if (finishedAt.isBefore(processReference)) {
-                throw new IllegalArgumentException(
-                        "finishedAt cannot be before processedAt"
-                );
-            }
+            ErrorCollector.builder()
+                    .check(
+                            !finishedAt.isBefore(processReference),
+                            DomainError.of(
+                                    DomainErrorCode.INVALID_RANGE,
+                                    "finishedAt",
+                                    "finishedAt cannot be before processedAt"
+                            )
+                    )
+                    .validate();
             this.finishedAt = finishedAt;
         }
         return this;

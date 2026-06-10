@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.domain.insight.repository;
 
 import br.com.meetingdecoder.domain.insight.model.Produto;
-import br.com.meetingdecoder.domain.insight.model.ProdutoId;
+import br.com.meetingdecoder.domain.insight.valueobject.ProdutoId;
 
 import java.util.List;
 import java.util.Optional;

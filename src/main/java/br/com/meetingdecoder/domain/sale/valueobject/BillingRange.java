@@ -1,5 +1,9 @@
 package br.com.meetingdecoder.domain.sale.valueobject;
 
+import br.com.meetingdecoder.domain.shared.validation.DomainError;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
+
 public class BillingRange {
     private final double minValue;
     private final double maxValue;
@@ -10,13 +14,33 @@ public class BillingRange {
         this.maxValue = maxValue;
     }
 
-    private void validate(double minValue, double maxValue) {
-        if (minValue <= 0)
-            throw new IllegalArgumentException("Minimum value must be positive");
-        if (maxValue <= 0)
-            throw new IllegalArgumentException("Maximum value must be positive");
-        if (minValue > maxValue)
-            throw new IllegalArgumentException("Minimum value cannot be greater than maximum value");
+    private void validate(
+            double minValue,
+            double maxValue
+    ) {
+        ErrorCollector.builder()
+                .check(
+                        minValue > 0,
+                        DomainError.of(
+                                DomainErrorCode.INVALID_BILLING_RANGE,
+                                "minValue"
+                        )
+                )
+                .check(
+                        maxValue > 0,
+                        DomainError.of(
+                                DomainErrorCode.INVALID_BILLING_RANGE,
+                                "maxValue"
+                        )
+                )
+                .check(
+                        minValue <= maxValue,
+                        DomainError.of(
+                                DomainErrorCode.INVALID_BILLING_RANGE,
+                                "billingRange"
+                        )
+                )
+                .validate();
     }
 
     public static BillingRange of(double minValue, double maxValue) {

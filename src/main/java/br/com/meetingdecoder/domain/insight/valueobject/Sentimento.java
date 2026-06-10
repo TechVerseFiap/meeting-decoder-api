@@ -1,5 +1,6 @@
 package br.com.meetingdecoder.domain.insight.valueobject;
 
+import br.com.meetingdecoder.domain.insight.enums.Polaridade;
 import br.com.meetingdecoder.domain.shared.valueobject.ScoreConfiabilidade;
 
 public final class Sentimento {

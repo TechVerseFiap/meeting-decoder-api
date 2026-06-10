@@ -1,7 +1,6 @@
-package br.com.meetingdecoder.domain.insight.model;
+package br.com.meetingdecoder.domain.insight.valueobject;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 import java.util.Optional;
 
 /**

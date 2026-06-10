@@ -1,6 +1,7 @@
 package br.com.meetingdecoder.domain.sale.valueobject;
 
-import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.util.UUID;
 
@@ -13,14 +14,20 @@ public class SellerId {
     }
 
     private void validate(UUID value) {
-        DomainValidation.notNull(value, "id");
+        ErrorCollector.builder()
+                .requireNotNull(
+                        value,
+                        "id",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .validate();
     }
 
-    public SellerId of(UUID value) {
+    public static SellerId of(UUID value) {
         return new SellerId(value);
     }
 
-    public SellerId of(String value) {
+    public static SellerId of(String value) {
         return new SellerId(UUID.fromString(value));
     }
 

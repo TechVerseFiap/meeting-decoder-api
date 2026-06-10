@@ -1,7 +1,9 @@
 package br.com.meetingdecoder.domain.sale.valueobject;
 
 import br.com.meetingdecoder.domain.sale.enums.NpsCategory;
-import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.DomainError;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.time.LocalDateTime;
 
@@ -20,11 +22,37 @@ public class NpsSnapshot {
         this.category = getCategory();
     }
 
-    private void validate(Double npsNote, LocalDateTime npsDate) {
-        DomainValidation.notNull(npsNote, "npsNote");
-        DomainValidation.notFuture(npsDate, "npsDate");
-        if (npsNote < 0 || npsNote > 10)
-            throw new IllegalArgumentException("The nps value must be between 0 and 10: " + npsNote);
+    private void validate(
+            Double npsNote,
+            LocalDateTime npsDate
+    ) {
+        ErrorCollector.builder()
+                .requireNotNull(
+                        npsNote,
+                        "npsNote",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .requireNotNull(
+                        npsDate,
+                        "npsDate",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .requireInRange(
+                        npsNote,
+                        0.0,
+                        10.0,
+                        "npsNote",
+                        DomainErrorCode.INVALID_SCORE
+                )
+                .check(
+                        npsDate == null
+                                || !npsDate.isAfter(LocalDateTime.now()),
+                        DomainError.of(
+                                DomainErrorCode.INVALID_FIELD,
+                                "npsDate"
+                        )
+                )
+                .validate();
     }
 
     private NpsCategory getCategory() {

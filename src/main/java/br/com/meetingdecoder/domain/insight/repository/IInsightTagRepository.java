@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.domain.insight.repository;
 
 import br.com.meetingdecoder.domain.insight.model.InsightTag;
-import br.com.meetingdecoder.domain.insight.model.InsightTagId;
+import br.com.meetingdecoder.domain.insight.valueobject.InsightTagId;
 
 import java.util.List;
 import java.util.Optional;

@@ -6,7 +6,9 @@ import br.com.meetingdecoder.domain.sale.enums.NpsCategory;
 import br.com.meetingdecoder.domain.sale.valueobject.BillingRange;
 import br.com.meetingdecoder.domain.sale.valueobject.ClientId;
 import br.com.meetingdecoder.domain.sale.valueobject.NpsSnapshot;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
@@ -83,20 +85,22 @@ public class Client {
             BillingRange billingRange,
             LocalDateTime createdAt
     ) {
-        DomainValidation.notNull(id, "id");
-        DomainValidation.notBlank(externalId, "externalId");
-        DomainValidation.notBlank(corporateReason, "corporateReason");
-        DomainValidation.notBlank(fantasyName, "fantasyName");
-        DomainValidation.notBlank(cnpj, "cnpj");
-        DomainValidation.notBlank(cnae, "cnae");
-        DomainValidation.notBlank(segment, "segment");
-        DomainValidation.notNull(size, "size");
-        DomainValidation.notBlank(city, "city");
-        DomainValidation.notBlank(state, "state");
-        DomainValidation.notBlank(country, "country");
-        DomainValidation.notNull(type, "type");
-        DomainValidation.notNull(billingRange, "billingRange");
-        DomainValidation.notNull(createdAt, "createdAt");
+        ErrorCollector.builder()
+                .requireNotNull(id, "id", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(externalId, "externalId", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(corporateReason, "corporateReason", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(fantasyName, "fantasyName", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(cnpj, "cnpj", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(cnae, "cnae", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(segment, "segment", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(size, "size", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(city, "city", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(state, "state", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(country, "country", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(type, "type", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(billingRange, "billingRange", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(createdAt, "createdAt", DomainErrorCode.EMPTY_FIELD)
+                .validate();
     }
 
     public static Client create(
@@ -166,38 +170,86 @@ public class Client {
             NpsSnapshot npsSnapshot
     ) {
         if (corporateReason != null) {
-            DomainValidation.notBlank(corporateReason, "corporateReason");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            corporateReason,
+                            "corporateReason",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.corporateReason = corporateReason;
         }
         if (fantasyName != null) {
-            DomainValidation.notBlank(fantasyName, "fantasyName");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            fantasyName,
+                            "fantasyName",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.fantasyName = fantasyName;
         }
         if (cnpj != null) {
-            DomainValidation.notBlank(cnpj, "cnpj");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            cnpj,
+                            "cnpj",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.cnpj = cnpj;
         }
         if (cnae != null) {
-            DomainValidation.notBlank(cnae, "cnae");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            cnae,
+                            "cnae",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.cnae = cnae;
         }
         if (segment != null) {
-            DomainValidation.notBlank(segment, "segment");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            segment,
+                            "segment",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.segment = segment;
         }
         if (size != null) {
             this.size = size;
         }
         if (city != null) {
-            DomainValidation.notBlank(city, "city");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            city,
+                            "city",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.city = city;
         }
         if (state != null) {
-            DomainValidation.notBlank(state, "state");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            state,
+                            "state",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.state = state;
         }
         if (country != null) {
-            DomainValidation.notBlank(country, "country");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            country,
+                            "country",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
             this.country = country;
         }
         if (type != null) {

@@ -1,4 +1,4 @@
-package br.com.meetingdecoder.domain.insight.model;
+package br.com.meetingdecoder.domain.insight.valueobject;
 
 import java.time.Instant;
 

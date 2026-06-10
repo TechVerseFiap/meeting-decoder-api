@@ -1,6 +1,7 @@
 package br.com.meetingdecoder.domain.transcription.valueobject;
 
-import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 public class RecordingUrl {
     private final String value;
@@ -11,7 +12,13 @@ public class RecordingUrl {
     }
 
     private void validate(String value) {
-        DomainValidation.notBlank(value, "recordingurl");
+        ErrorCollector.builder()
+                .requireNotBlank(
+                        value,
+                        "recordingUrl",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .validate();
     }
 
     public static RecordingUrl of(String value) {

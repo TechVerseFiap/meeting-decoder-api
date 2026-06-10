@@ -1,9 +1,9 @@
-package br.com.meetingdecoder.domain.insight.model;
+package br.com.meetingdecoder.domain.insight.valueobject;
 
+import br.com.meetingdecoder.domain.insight.enums.Prioridade;
 import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import java.time.Instant;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 

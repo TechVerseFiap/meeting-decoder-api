@@ -1,6 +1,8 @@
 package br.com.meetingdecoder.domain.transcription.model;
 
+import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import br.com.meetingdecoder.domain.transcription.enums.MeetingStatus;
 import br.com.meetingdecoder.domain.transcription.valueobject.MeetingId;
 import br.com.meetingdecoder.domain.transcription.valueobject.MeetingPeriod;
@@ -65,14 +67,16 @@ public class Meeting {
             RecordingUrl recordingUrl,
             Participants participants
     ) {
-        DomainValidation.notNull(id, "meetingId");
-        DomainValidation.notBlank(externalId, "externalId");
-        DomainValidation.notNull(meetingDate, "meetingDate");
-        DomainValidation.notNull(meetingPeriod, "meetingPeriod");
-        DomainValidation.notNull(status, "status");
-        DomainValidation.notNull(external, "external");
-        DomainValidation.notNull(recordingUrl, "recordingUrl");
-        DomainValidation.notNull(participants, "participants");
+        ErrorCollector.builder()
+                .requireNotNull(id, "meetingId", DomainErrorCode.EMPTY_FIELD)
+                .requireNotBlank(externalId, "externalId", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(meetingDate, "meetingDate", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(meetingPeriod, "meetingPeriod", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(status, "status", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(external, "external", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(recordingUrl, "recordingUrl", DomainErrorCode.EMPTY_FIELD)
+                .requireNotNull(participants, "participants", DomainErrorCode.EMPTY_FIELD)
+                .validate();
     }
 
     public static Meeting create(
@@ -107,7 +111,14 @@ public class Meeting {
             Participants participants
     ) {
         if (externalId != null) {
-            DomainValidation.notBlank(externalId, "externalId");
+            ErrorCollector.builder()
+                    .requireNotBlank(
+                            externalId,
+                            "externalId",
+                            DomainErrorCode.EMPTY_FIELD
+                    )
+                    .validate();
+
             this.externalId = externalId;
         }
         if (meetingDate != null) {
