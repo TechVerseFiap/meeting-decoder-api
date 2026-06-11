@@ -75,4 +75,12 @@ public class MeetingPeriod {
     public long durationInMinutes() {
         return Duration.between(startTime, endTime).toMinutes();
     }
+
+    public LocalDateTime startTime() {
+        return this.startTime;
+    }
+
+    public LocalDateTime endTime() {
+        return this.endTime;
+    }
 }

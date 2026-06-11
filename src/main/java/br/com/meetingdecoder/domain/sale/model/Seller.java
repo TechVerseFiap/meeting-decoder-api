@@ -107,35 +107,35 @@ public class Seller {
         this.active = false;
     }
 
-    public UUID getId() {
+    public UUID id() {
         return id.value();
     }
 
-    public UUID getManagerId() {
+    public UUID managerId() {
         return managerId != null ? managerId.value() : null;
     }
 
-    public SellerType getType() {
+    public SellerType type() {
         return type;
     }
 
-    public String getName() {
+    public String name() {
         return name;
     }
 
-    public String getEmail() {
+    public String email() {
         return email.value();
     }
 
-    public boolean isActive() {
+    public boolean active() {
         return active;
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDateTime createdAt() {
         return createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public LocalDateTime updatedAt() {
         return updatedAt;
     }
 }

@@ -23,11 +23,11 @@ public class ClientId {
                 .validate();
     }
 
-    public ClientId of(UUID value) {
+    public static ClientId of(UUID value) {
         return new ClientId(value);
     }
 
-    public ClientId of(String value) {
+    public static ClientId of(String value) {
         return new ClientId(UUID.fromString(value));
     }
 

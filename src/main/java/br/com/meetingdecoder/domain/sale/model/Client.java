@@ -7,7 +7,6 @@ import br.com.meetingdecoder.domain.sale.valueobject.BillingRange;
 import br.com.meetingdecoder.domain.sale.valueobject.ClientId;
 import br.com.meetingdecoder.domain.sale.valueobject.NpsSnapshot;
 import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
-import br.com.meetingdecoder.domain.shared.validation.DomainValidation;
 import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.time.LocalDateTime;
@@ -264,79 +263,79 @@ public class Client {
         return this;
     }
 
-    public UUID getId() {
+    public UUID id() {
         return id.value();
     }
 
-    public String getExternalId() {
+    public String externalId() {
         return externalId;
     }
 
-    public String getCorporateReason() {
+    public String corporateReason() {
         return corporateReason;
     }
 
-    public String getFantasyName() {
+    public String fantasyName() {
         return fantasyName;
     }
 
-    public String getCnpj() {
+    public String cnpj() {
         return cnpj;
     }
 
-    public String getCnae() {
+    public String cnae() {
         return cnae;
     }
 
-    public String getSegment() {
+    public String segment() {
         return segment;
     }
 
-    public ClientSize getSize() {
+    public ClientSize size() {
         return size;
     }
 
-    public String getCity() {
+    public String city() {
         return city;
     }
 
-    public String getState() {
+    public String state() {
         return state;
     }
 
-    public String getCountry() {
+    public String country() {
         return country;
     }
 
-    public ClientType getType() {
+    public ClientType type() {
         return type;
     }
 
-    public double getMinBilling() {
+    public double minBilling() {
         return billingRange.minValue();
     }
 
-    public double getMaxBilling() {
+    public double maxBilling() {
         return billingRange.maxValue();
     }
 
-    public double getNpsNote() {
+    public double npsNote() {
         return npsSnapshot.npsNote();
     }
 
-    public LocalDateTime getNpsDate() {
+    public LocalDateTime npsDate() {
         return npsSnapshot.npsDate();
     }
 
-    public NpsCategory getNpsCategory() {
+    public NpsCategory npsCategory() {
         return npsSnapshot.category();
     }
 
-    public LocalDateTime getCreatedAt() {
+    public LocalDateTime createdAt() {
         return createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
+    public LocalDateTime updatedAt() {
         return updatedAt;
     }
 }

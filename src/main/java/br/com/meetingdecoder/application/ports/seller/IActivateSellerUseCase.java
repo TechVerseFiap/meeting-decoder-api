@@ -1,9 +1,9 @@
-package br.com.meetingdecoder.application.usecase.seller;
+package br.com.meetingdecoder.application.ports.seller;
 
 import br.com.meetingdecoder.application.shared.result.Result;
 
 import java.util.UUID;
 
-public interface DeactivateSellerUseCase {
+public interface IActivateSellerUseCase {
     Result<Void> execute(UUID sellerId);
 }

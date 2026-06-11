@@ -12,6 +12,6 @@ public interface ITranscriptionRepository {
     boolean existsById(TranscriptionId id);
     boolean existsByName(String name);
     List<Transcription> findAll();
-    Optional<Transcription> findById(MeetingId id);
-    void deleteById(MeetingId id);
+    Optional<Transcription> findById(TranscriptionId id);
+    void deleteById(TranscriptionId id);
 }
