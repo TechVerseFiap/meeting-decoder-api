@@ -23,10 +23,7 @@ public class Result<T> {
     }
 
     private void validate(T data, ErrorCollector errors) {
-        boolean hasData = data != null;
-        boolean hasErrors = errors != null;
-
-        if (hasData == hasErrors) {
+        if (data != null && errors != null) {
             throw new IllegalStateException(
                     "Result must contain either data or errors"
             );
