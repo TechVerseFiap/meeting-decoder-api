@@ -48,23 +48,23 @@ The API follows a **Hexagonal Architecture (Ports & Adapters)** with **Domain-Dr
 
 ## Bounded Contexts
 
-| Context | Description | Main Entities |
-|---|---|---|
-| **Transcription** | Meeting recordings and their transcriptions processed by ASR/AI | `Meeting`, `Transcription` |
-| **Sales** | Client and seller management with NPS tracking | `Client`, `Seller` |
-| **Insights** | AI-extracted insights with sentiment analysis and churn detection | `Insight`, `Produto`, `InsightTag` |
+| Context           | Description                                                       | Main Entities                      |
+|-------------------|-------------------------------------------------------------------|------------------------------------|
+| **Transcription** | Meeting recordings and their transcriptions processed by ASR/AI   | `Meeting`, `Transcription`         |
+| **Sales**         | Client and seller management with NPS tracking                    | `Client`, `Seller`                 |
+| **Insights**      | AI-extracted insights with sentiment analysis and churn detection | `Insight`, `Produto`, `InsightTag` |
 
 ## Tech Stack
 
-| Component | Technology |
-|---|---|
-| Language | Java 21 |
-| Framework | Spring Boot 4.0.6 |
-| ORM | Spring Data JPA + Hibernate |
-| Database | OracleDB (ojdbc11) |
-| Build | Maven (wrapper included) |
-| Boilerplate | Lombok |
-| Containerization | Docker + Docker Compose |
+| Component        | Technology                  |
+|------------------|-----------------------------|
+| Language         | Java 21                     |
+| Framework        | Spring Boot 4.0.6           |
+| ORM              | Spring Data JPA + Hibernate |
+| Database         | OracleDB (ojdbc11)          |
+| Build            | Maven (wrapper included)    |
+| Boilerplate      | Lombok                      |
+| Containerization | Docker + Docker Compose     |
 
 ## Prerequisites
 
