@@ -1,15 +1,15 @@
 package br.com.meetingdecoder.application.shared.result;
 
-import br.com.meetingdecoder.application.shared.error.DomainError;
-import br.com.meetingdecoder.application.shared.error.ErrorAccumulator;
+import br.com.meetingdecoder.domain.shared.validation.DomainError;
+import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 
 import java.util.List;
 
 public class Result<T> {
     private T data;
-    private final ErrorAccumulator errors;
+    private final ErrorCollector errors;
 
-    private Result(T data, ErrorAccumulator errors) {
+    private Result(T data, ErrorCollector errors) {
         validate(data, errors);
         this.data = data;
         this.errors = errors;
@@ -17,14 +17,13 @@ public class Result<T> {
 
     private Result(T data, DomainError error) {
         this.data = data;
-        this.errors = new ErrorAccumulator(error);
+        this.errors = ErrorCollector.builder()
+                .add(error)
+                .build();
     }
 
-    private void validate(T data, ErrorAccumulator errors) {
-        boolean hasData = data != null;
-        boolean hasErrors = errors != null;
-
-        if (hasData == hasErrors) {
+    private void validate(T data, ErrorCollector errors) {
+        if (data != null && errors != null) {
             throw new IllegalStateException(
                     "Result must contain either data or errors"
             );
@@ -39,7 +38,7 @@ public class Result<T> {
         return new Result<>(null, (DomainError) null);
     }
 
-    public static <T> Result<T> failure(ErrorAccumulator errors) {
+    public static <T> Result<T> failure(ErrorCollector errors) {
         return new Result<>(null, errors);
     }
 

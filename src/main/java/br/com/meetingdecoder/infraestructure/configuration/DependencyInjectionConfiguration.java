@@ -1,7 +1,7 @@
 package br.com.meetingdecoder.infraestructure.configuration;
 
 import br.com.meetingdecoder.application.ports.in.serviceRecommendation.*;
-import br.com.meetingdecoder.application.ports.out.IProductRepository;
+import br.com.meetingdecoder.domain.insight.repository.IProductRepository;
 import br.com.meetingdecoder.application.service.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
