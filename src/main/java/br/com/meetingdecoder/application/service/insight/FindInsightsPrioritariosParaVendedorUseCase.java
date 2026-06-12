@@ -4,6 +4,7 @@ import br.com.meetingdecoder.application.dto.insight.InsightOutput;
 import br.com.meetingdecoder.application.ports.insight.IFindPriorityInsightsForSellerUseCase;
 import br.com.meetingdecoder.application.shared.result.Result;
 import br.com.meetingdecoder.domain.insight.repository.IInsightRepository;
+import br.com.meetingdecoder.domain.sale.valueobject.SellerId;
 
 import java.util.List;
 import java.util.UUID;
@@ -24,7 +25,7 @@ public class FindInsightsPrioritariosParaVendedorUseCase
             UUID vendedorId
     ) {
         List<InsightOutput> insights =
-                repository.findInsightsPrioritariosParaVendedor(vendedorId)
+                repository.findInsightsPrioritariosParaVendedor(SellerId.of(vendedorId))
                         .stream()
                         .map(InsightOutput::from)
                         .toList();

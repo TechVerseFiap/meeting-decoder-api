@@ -140,6 +140,7 @@ public class Meeting {
         if (participants != null) {
             this.participants = participants;
         }
+        this.updatedAt = LocalDateTime.now();
         return this;
     }
 

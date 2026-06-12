@@ -109,7 +109,6 @@ public final class AcaoRecomendada {
                 .requireNotBlank(descricao, "descricao", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(prioridade, "prioridade", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(scoreConfiabilidade, "scoreConfiabilidade", DomainErrorCode.INVALID_SCORE)
-                .requireInRange(scoreConfiabilidade.getValue(), 0.0, 1.0, "scoreConfiabilidade", DomainErrorCode.INVALID_SCORE)
                 .validate();
 
         UUID id = UUID.randomUUID();

@@ -26,7 +26,7 @@ public final class Insight {
 
     private Insight(
             InsightId id,
-            Object transcricaoId,
+            TranscriptionId transcricaoId,
             Sentimento sentimento,
             String descricao,
             String trechoOrigem,
@@ -51,7 +51,7 @@ public final class Insight {
 
     public static Insight restore(
             InsightId id,
-            Object transcricaoId,
+            TranscriptionId transcricaoId,
             Sentimento sentimento,
             String descricao,
             String trechoOrigem,
@@ -78,7 +78,7 @@ public final class Insight {
     }
 
     public static Insight create(
-            Object transcricaoId,
+            TranscriptionId transcricaoId,
             Sentimento sentimento,
             String descricao,
             String trechoOrigem,
@@ -93,7 +93,6 @@ public final class Insight {
                 .requireNotNull(descricao, "descricao", DomainErrorCode.EMPTY_FIELD)
                 .requireNotBlank(descricao, "descricao", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(scoreConfiabilidade, "scoreConfiabilidade", DomainErrorCode.INVALID_SCORE)
-                .requireInRange(scoreConfiabilidade.getValue(), 0.0, 1.0, "scoreConfiabilidade", DomainErrorCode.INVALID_SCORE)
                 .requireNotNull(acoes, "acoes", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(produtos, "produtos", DomainErrorCode.EMPTY_FIELD)
                 .requireNotNull(tags, "tags", DomainErrorCode.EMPTY_FIELD)
@@ -151,7 +150,7 @@ public final class Insight {
         return id;
     }
 
-    public Object getTranscricaoId() {
+    public TranscriptionId getTranscricaoId() {
         return transcricaoId;
     }
 

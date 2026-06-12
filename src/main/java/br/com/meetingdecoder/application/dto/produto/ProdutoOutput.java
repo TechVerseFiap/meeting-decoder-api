@@ -24,14 +24,12 @@ public record ProdutoOutput(
     ) {
 
         BigDecimal minimo = produto.faixaPreco()
-                .map(FaixaPreco::minimo)
-                .orElse(null)
-                .get();
+                .flatMap(FaixaPreco::minimo)
+                .orElse(null);
 
         BigDecimal maximo = produto.faixaPreco()
-                .map(FaixaPreco::maximo)
-                .orElse(null)
-                .get();
+                .flatMap(FaixaPreco::maximo)
+                .orElse(null);
 
         return new ProdutoOutput(
                 produto.id().value(),

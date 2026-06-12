@@ -20,7 +20,7 @@ public class CreateSellerUseCase implements ICreateSellerUseCase {
     public Result<SellerOutput> execute(CreateSellerCommand command) {
         Seller seller = Seller.create(
                 SellerId.of(command.id()),
-                SellerId.of(command.managerId()),
+                command.managerId() != null ? SellerId.of(command.managerId()) : null,
                 command.type(),
                 command.name(),
                 Email.of(command.email())

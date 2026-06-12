@@ -96,15 +96,18 @@ public class Seller {
             DomainValidation.notBlank(email.value(), "email");
             this.email = email;
         }
+        this.updatedAt = LocalDateTime.now();
         return this;
     }
 
     public void activate() {
         this.active = true;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public void deactivate() {
         this.active = false;
+        this.updatedAt = LocalDateTime.now();
     }
 
     public UUID id() {

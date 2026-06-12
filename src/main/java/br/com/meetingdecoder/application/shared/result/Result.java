@@ -31,11 +31,11 @@ public class Result<T> {
     }
 
     public static <T> Result<T> success(T data) {
-        return new Result<>(data, (DomainError) null);
+        return new Result<>(data, (ErrorCollector) null);
     }
 
     public static Result<Void> success() {
-        return new Result<>(null, (DomainError) null);
+        return new Result<>(null, (ErrorCollector) null);
     }
 
     public static <T> Result<T> failure(ErrorCollector errors) {
@@ -59,6 +59,6 @@ public class Result<T> {
     }
 
     public List<DomainError> getErrors() {
-        return errors.getErrors();
+        return errors != null ? errors.getErrors() : List.of();
     }
 }

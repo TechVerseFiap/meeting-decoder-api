@@ -21,7 +21,7 @@ public class Transcription {
     private LocalDateTime processedAt;
     private LocalDateTime finishedAt;
     private LocalDateTime createdAt;
-    private final LocalDateTime updatedAt;
+    private LocalDateTime updatedAt;
 
     private Transcription(
             TranscriptionId id,
@@ -167,6 +167,7 @@ public class Transcription {
                     .validate();
             this.finishedAt = finishedAt;
         }
+        this.updatedAt = LocalDateTime.now();
         return this;
     }
 

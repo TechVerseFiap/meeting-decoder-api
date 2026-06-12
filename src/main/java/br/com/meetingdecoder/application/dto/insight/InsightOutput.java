@@ -27,7 +27,7 @@ public record InsightOutput(
 
         return new InsightOutput(
                 insight.getId().value(),
-                (UUID) insight.getTranscricaoId(),
+                insight.getTranscricaoId().value(),
                 insight.getSentimento()
                         .getPolaridade()
                         .name(),

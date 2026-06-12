@@ -218,9 +218,6 @@ public class Client {
                     .validate();
             this.segment = segment;
         }
-        if (size != null) {
-            this.size = size;
-        }
         if (city != null) {
             ErrorCollector.builder()
                     .requireNotBlank(
@@ -257,9 +254,15 @@ public class Client {
         if (billingRange != null) {
             this.billingRange = billingRange;
         }
+        if (size != null) {
+            this.size = size;
+        } else if (billingRange != null) {
+            this.size = determineSize(billingRange);
+        }
         if (npsSnapshot != null) {
             this.npsSnapshot = npsSnapshot;
         }
+        this.updatedAt = LocalDateTime.now();
         return this;
     }
 
