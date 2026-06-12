@@ -3,10 +3,14 @@ spring:
     name: meeting-decoder
 
   datasource:
-    url: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
-    username: ${APP_USER}
-    password: ${ORACLE_PASSWORD}
+    url: ${SPRING_DATASOURCE_URL:jdbc:oracle:thin:@//localhost:1521/FREEPDB1}
+    username: ${SPRING_DATASOURCE_USERNAME}
+    password: ${SPRING_DATASOURCE_PASSWORD}
     driver-class-name: oracle.jdbc.OracleDriver
+    hikari:
+      initialization-fail-timeout: -1
+      connection-timeout: 60000
+      validation-timeout: 5000
 
   jpa:
     hibernate:
@@ -27,7 +31,6 @@ logging:
     org:
       hibernate:
         SQL: DEBUG
-
         type:
           descriptor:
             sql:

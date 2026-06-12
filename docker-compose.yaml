@@ -11,13 +11,16 @@ services:
       APP_USER_PASSWORD: ${APP_USER_PASSWORD}
     volumes:
       - oracle_data:/opt/oracle/oradata
-
     healthcheck:
-      test: [ "CMD-SHELL", "lsnrctl status" ]
-      interval: 30s
+      test:
+        [
+          "CMD-SHELL",
+          "echo \"SELECT OPEN_MODE FROM V\\$DATABASE;\" | sqlplus -s ${APP_USER}/${APP_USER_PASSWORD}@localhost:1521/FREEPDB1 | grep 'READ WRITE'"
+        ]
+      interval: 20s
       timeout: 10s
-      retries: 20
-      start_period: 120s
+      retries: 30
+      start_period: 240s
 
   meeting-decoder-api:
     build: .
@@ -28,9 +31,10 @@ services:
       oracle-db:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@oracle-db:1521/FREEPDB1
+      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//oracle-db:1521/FREEPDB1
       SPRING_DATASOURCE_USERNAME: ${APP_USER}
       SPRING_DATASOURCE_PASSWORD: ${APP_USER_PASSWORD}
+    restart: unless-stopped
 
 volumes:
   oracle_data:
