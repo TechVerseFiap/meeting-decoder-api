@@ -39,6 +39,9 @@ public record DomainError(
             case INVALID_DATE -> "com data inválida";
             case INVALID_RANGE -> "com intervalo inválido";
             case INVALID_SCORE -> "com score inválido";
+            case INVALID_FIELD -> "com campo inválido";
+            case INVALID_BILLING_RANGE -> "com range de faturamento inválido";
+            case INVALID_EMAIL -> "com email inválido";
             case ALREADY_EXISTS -> "já existe";
             case NOT_FOUND -> "não encontrado";
         };
