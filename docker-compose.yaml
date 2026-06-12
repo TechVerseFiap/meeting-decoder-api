@@ -6,16 +6,16 @@ services:
     ports:
       - "1521:1521"
     environment:
-      ORACLE_PASSWORD: ${ORACLE_PASSWORD}
-      APP_USER: ${APP_USER}
-      APP_USER_PASSWORD: ${APP_USER_PASSWORD}
+      ORACLE_PASSWORD: ${DB_PASSWORD}
+      APP_USER: ${DB_USERNAME}
+      APP_USER_PASSWORD: ${DB_PASSWORD}
     volumes:
       - oracle_data:/opt/oracle/oradata
     healthcheck:
       test:
         [
           "CMD-SHELL",
-          "echo 'SELECT 1 FROM DUAL;' | sqlplus -s ${APP_USER}/${APP_USER_PASSWORD}@localhost:1521/FREEPDB1 > /dev/null"
+          "echo 'SELECT 1 FROM DUAL;' | sqlplus -s ${DB_USERNAME}/${DB_PASSWORD}@localhost:1521/FREEPDB1 > /dev/null"
         ]
       interval: 20s
       timeout: 10s
@@ -31,9 +31,11 @@ services:
       oracle-db:
         condition: service_healthy
     environment:
-      SPRING_DATASOURCE_URL: jdbc:oracle:thin:@//oracle-db:1521/FREEPDB1
-      SPRING_DATASOURCE_USERNAME: ${APP_USER}
-      SPRING_DATASOURCE_PASSWORD: ${APP_USER_PASSWORD}
+      DB_USERNAME: ${DB_USERNAME}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_HOST: oracle-db
+      DB_PORT: ${DB_PORT}
+      DB_NAME: ${DB_NAME}
     restart: unless-stopped
 
 volumes:
