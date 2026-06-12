@@ -43,7 +43,7 @@ public class ClientEntity {
     private String segment;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "size", nullable = false)
+    @Column(name = "company_size", nullable = false)
     private ClientSize size;
 
     @Column(name = "city", nullable = false)
