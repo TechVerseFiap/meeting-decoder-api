@@ -15,7 +15,7 @@ services:
       test:
         [
           "CMD-SHELL",
-          "echo \"SELECT OPEN_MODE FROM V\\$DATABASE;\" | sqlplus -s ${APP_USER}/${APP_USER_PASSWORD}@localhost:1521/FREEPDB1 | grep 'READ WRITE'"
+          "echo 'SELECT 1 FROM DUAL;' | sqlplus -s ${APP_USER}/${APP_USER_PASSWORD}@localhost:1521/FREEPDB1 > /dev/null"
         ]
       interval: 20s
       timeout: 10s
