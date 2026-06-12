@@ -47,7 +47,7 @@ public class MeetingController {
         Result<MeetingOutput> result = createMeetingUseCase.execute(command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result.getData());
@@ -91,7 +91,7 @@ public class MeetingController {
         Result<MeetingOutput> result = updateMeetingUseCase.execute(MeetingId.of(id), command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

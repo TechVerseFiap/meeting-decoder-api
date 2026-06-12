@@ -37,7 +37,7 @@ public class InsightController {
         Result<List<InsightOutput>> result = findInsightsByTranscriptionUseCase.execute(transcriptionId);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());
@@ -48,7 +48,7 @@ public class InsightController {
         Result<List<InsightOutput>> result = findActiveChurnRisksUseCase.execute(clientId);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());
@@ -59,7 +59,7 @@ public class InsightController {
         Result<List<InsightOutput>> result = findPriorityInsightsForSellerUseCase.execute(sellerId);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

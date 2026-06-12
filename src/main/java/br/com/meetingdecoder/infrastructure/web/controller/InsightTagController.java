@@ -25,7 +25,7 @@ public class InsightTagController {
         Result<List<InsightTagOutput>> result = listInsightTagsUseCase.execute();
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

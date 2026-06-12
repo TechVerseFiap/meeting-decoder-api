@@ -41,7 +41,7 @@ public class TranscriptionController {
         Result<TranscriptionOutput> result = createTranscriptionUseCase.execute(command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result.getData());
@@ -82,7 +82,7 @@ public class TranscriptionController {
         );
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

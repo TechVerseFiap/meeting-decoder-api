@@ -39,7 +39,7 @@ public class SellerController {
         Result<SellerOutput> result = createSellerUseCase.execute(command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result.getData());
@@ -68,7 +68,7 @@ public class SellerController {
         Result<SellerOutput> result = updateSellerUseCase.execute(SellerId.of(id), command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

@@ -48,7 +48,7 @@ public class ProdutoController {
         Result<List<ProdutoOutput>> result = findProdutosByCategoriaUseCase.execute(categoria);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());
@@ -59,7 +59,7 @@ public class ProdutoController {
         Result<List<ProdutoOutput>> result = findProdutosByLinhaUseCase.execute(linha);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());

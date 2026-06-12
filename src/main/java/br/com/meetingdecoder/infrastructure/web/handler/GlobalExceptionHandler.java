@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
                 .toList();
 
         return ResponseEntity
-                .status(HttpStatus.UNPROCESSABLE_ENTITY)
+                .status(HttpStatus.BAD_REQUEST)
                 .body(Map.of("errors", errors));
     }
 

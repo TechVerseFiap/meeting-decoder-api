@@ -53,7 +53,7 @@ public class ClientController {
         Result<ClientOutput> result = createClientUseCase.execute(command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.status(HttpStatus.CREATED).body(result.getData());
@@ -98,7 +98,7 @@ public class ClientController {
         Result<ClientOutput> result = updateClientUseCase.execute(ClientId.of(id), command);
 
         if (result.isFailure()) {
-            return ResponseEntity.unprocessableEntity().body(result.getErrors());
+            return ResponseEntity.unprocessableContent().body(result.getErrors());
         }
 
         return ResponseEntity.ok(result.getData());
