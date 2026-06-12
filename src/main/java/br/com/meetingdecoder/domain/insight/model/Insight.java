@@ -1,12 +1,10 @@
 package br.com.meetingdecoder.domain.insight.model;
 
 import br.com.meetingdecoder.domain.insight.valueobject.*;
-<<<<<<< Updated upstream
-import br.com.meetingdecoder.domain.shared.exception.DomainValidationException;
-=======
->>>>>>> Stashed changes
+
 import br.com.meetingdecoder.domain.shared.validation.DomainErrorCode;
 import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
+import br.com.meetingdecoder.domain.transcription.valueobject.TranscriptionId;
 
 import java.time.Instant;
 import java.util.Collections;
@@ -15,7 +13,7 @@ import java.util.UUID;
 
 public final class Insight {
     private final InsightId id;
-    private final Object transcricaoId;
+    private final TranscriptionId transcricaoId;
     private final Sentimento sentimento;
     private final String descricao;
     private final String trechoOrigem;
@@ -120,6 +118,32 @@ public final class Insight {
                 tagsCopy,
                 now,
                 null
+        );
+    }
+
+    public Insight update(
+            Sentimento sentimento,
+            String descricao,
+            String trechoOrigem,
+            ScoreConfiabilidade scoreConfiabilidade,
+            List<AcaoRecomendada> acoes,
+            List<ProdutoCorrelacao> produtos,
+            List<TagCorrelacao> tags
+    ) {
+        return new Insight(
+                this.id,
+                this.transcricaoId,
+                sentimento != null ? sentimento : this.sentimento,
+                descricao != null ? descricao : this.descricao,
+                trechoOrigem != null ? trechoOrigem : this.trechoOrigem,
+                scoreConfiabilidade != null
+                        ? scoreConfiabilidade
+                        : this.scoreConfiabilidade,
+                acoes != null ? List.copyOf(acoes) : this.acoes,
+                produtos != null ? List.copyOf(produtos) : this.produtos,
+                tags != null ? List.copyOf(tags) : this.tags,
+                this.createdAt,
+                Instant.now()
         );
     }
 

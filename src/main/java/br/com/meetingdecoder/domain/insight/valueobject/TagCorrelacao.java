@@ -2,23 +2,34 @@ package br.com.meetingdecoder.domain.insight.valueobject;
 
 import java.time.Instant;
 
-/**
- * Value Object representing a correlation between an Insight and an InsightTag (classification).
- * Replaces the INSIGHT_TAG_REL join table at the domain level.
- * Immutable and identifies the tag and the confidence of the correlation.
- */
 public record TagCorrelacao(
         InsightTagId tagId,
         ScoreConfiabilidade score,
-        Instant createdAt) {
+        Instant createdAt
+) {
 
-    /**
-     * Constructor with null validation.
-     * All fields are required and cannot be null.
-     */
     public TagCorrelacao {
-        if (tagId == null) throw new NullPointerException("tagId cannot be null");
-        if (score == null) throw new NullPointerException("score cannot be null");
-        if (createdAt == null) throw new NullPointerException("createdAt cannot be null");
+        if (tagId == null) {
+            throw new IllegalArgumentException("tagId cannot be null");
+        }
+
+        if (score == null) {
+            throw new IllegalArgumentException("score cannot be null");
+        }
+
+        if (createdAt == null) {
+            throw new IllegalArgumentException("createdAt cannot be null");
+        }
+    }
+
+    public static TagCorrelacao of(
+            InsightTagId tagId,
+            ScoreConfiabilidade score
+    ) {
+        return new TagCorrelacao(
+                tagId,
+                score,
+                Instant.now()
+        );
     }
 }

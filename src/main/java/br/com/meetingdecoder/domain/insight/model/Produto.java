@@ -85,35 +85,62 @@ public final class Produto {
         return new Produto(id, nome, categoria, descricao, linha, faixaPreco, now, null);
     }
 
-    public ProdutoId getId() {
+    public Produto update(
+            String nome,
+            String categoria,
+            String descricao,
+            String linha,
+            BigDecimal faixaPrecoMinimo,
+            BigDecimal faixaPrecoMaximo
+    ) {
+        FaixaPreco novaFaixa = null;
+        if (faixaPrecoMinimo != null || faixaPrecoMaximo != null) {
+            novaFaixa = new FaixaPreco(
+                    faixaPrecoMinimo,
+                    faixaPrecoMaximo
+            );
+        }
+        return new Produto(
+                this.id,
+                nome != null ? nome : this.nome,
+                categoria != null ? categoria : this.categoria,
+                descricao != null ? descricao : this.descricao,
+                linha != null ? linha : this.linha,
+                novaFaixa != null ? novaFaixa : this.faixaPreco,
+                this.createdAt,
+                Instant.now()
+        );
+    }
+
+    public ProdutoId id() {
         return id;
     }
 
-    public String getNome() {
+    public String nome() {
         return nome;
     }
 
-    public String getCategoria() {
+    public String categoria() {
         return categoria;
     }
 
-    public String getDescricao() {
+    public String descricao() {
         return descricao;
     }
 
-    public String getLinha() {
+    public String linha() {
         return linha;
     }
 
-    public Optional<FaixaPreco> getFaixaPreco() {
+    public Optional<FaixaPreco> faixaPreco() {
         return Optional.ofNullable(faixaPreco);
     }
 
-    public Instant getCreatedAt() {
+    public Instant createdAt() {
         return createdAt;
     }
 
-    public Instant getUpdatedAt() {
+    public Instant updatedAt() {
         return updatedAt;
     }
 }

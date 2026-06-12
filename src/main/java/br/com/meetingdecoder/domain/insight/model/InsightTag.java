@@ -6,10 +6,6 @@ import br.com.meetingdecoder.domain.shared.validation.ErrorCollector;
 import java.time.Instant;
 import java.util.UUID;
 
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
 public final class InsightTag {
     private final InsightTagId id;
     private final String nome;
@@ -34,6 +30,21 @@ public final class InsightTag {
         InsightTagId id = InsightTagId.of(UUID.randomUUID());
         Instant now = Instant.now();
         return new InsightTag(id, nome, now);
+    }
+
+    public InsightTag update(String nome) {
+        ErrorCollector.builder()
+                .requireNotBlank(
+                        nome,
+                        "nome",
+                        DomainErrorCode.EMPTY_FIELD
+                )
+                .validate();
+        return new InsightTag(
+                this.id,
+                nome,
+                this.createdAt
+        );
     }
 
     public InsightTagId getId() {
